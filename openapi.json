@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Flock Energy \u2014 Urja Meter Ops API",
-    "description": "Production-grade REST API wrapper providing clean, normalized access to smart-meter information, time-series consumption readings, and network hierarchy from the legacy Urja Meter Ops distribution portal.",
+    "description": "Production-minded REST API wrapper providing clean, normalized access to smart-meter information, time-series consumption readings, and network hierarchy from the legacy Urja Meter Ops distribution portal.",
     "version": "1.0.0"
   },
   "paths": {

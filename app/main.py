@@ -31,7 +31,7 @@ from app.parser import (
 app = FastAPI(
     title="Flock Energy — Urja Meter Ops API",
     description=(
-        "Production-grade REST API wrapper providing clean, normalized access "
+        "Production-minded REST API wrapper providing clean, normalized access "
         "to smart-meter information, time-series consumption readings, and network hierarchy "
         "from the legacy Urja Meter Ops distribution portal."
     ),

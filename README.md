@@ -1,6 +1,6 @@
 # Flock Energy — Urja Meter Ops REST API Wrapper
 
-A clean, production-grade REST API wrapper built around the legacy **Urja Meter Ops** distribution metering portal (`https://urja-ops.flockenergy.tech`).
+A clean, maintainable, production-minded REST API wrapper built around the legacy **Urja Meter Ops** distribution metering portal (`https://urja-ops.flockenergy.tech`).
 
 This service isolates the legacy SvelteKit web portal behind a clean, documented, normalized REST API. It handles portal session management, authentication lifecycle, CSRF header requirements, HTML/JSON parsing, value normalization, and error translation.
 
@@ -36,7 +36,7 @@ Clean REST JSON Response
 ## 2. Project Structure
 
 ```
-flock-energy-api/
+FlockEnergyAssignment/
 │
 ├── app/
 │   ├── __init__.py        # Package initialization
@@ -74,8 +74,8 @@ flock-energy-api/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/flock-energy/flock-energy-api.git
-   cd flock-energy-api
+   git clone https://github.com/Roshini311/FlockEnergyAssignment.git
+   cd FlockEnergyAssignment
    ```
 
 2. **Create and activate a virtual environment**:
@@ -99,7 +99,7 @@ flock-energy-api/
 
 ## 4. Configuration
 
-Copy `.env.example` to `.env` and fill in credentials:
+Copy `.env.example` to `.env` and fill in your credentials:
 
 ```bash
 cp .env.example .env
@@ -107,9 +107,9 @@ cp .env.example .env
 
 `.env` content template:
 ```env
-URJA_BASE_URL=https://urja-ops.flockenergy.tech
-URJA_USERNAME=admin@flockenergy.tech
-URJA_PASSWORD=your_secure_password_here
+URJA_BASE_URL=https://urja-ops.flockenergy.tech/
+URJA_USERNAME=
+URJA_PASSWORD=
 REQUEST_TIMEOUT=10.0
 ```
 
@@ -120,7 +120,7 @@ REQUEST_TIMEOUT=10.0
 
 ## 5. Running the API Server
 
-Start the development server with Uvicorn:
+Start the API server with Uvicorn:
 
 ```bash
 uvicorn app.main:app --reload --port 8000
@@ -135,8 +135,9 @@ The service will be accessible at `http://localhost:8000`.
 
 ## 6. REST API Endpoints & Sample Requests
 
-### 1. Health Check
+### 1. Health Check (Readiness / Liveness)
 `GET /health`
+Verifies API readiness and reports the configured target upstream portal URL.
 ```bash
 curl http://localhost:8000/health
 ```
@@ -155,7 +156,7 @@ curl http://localhost:8000/health
 ```bash
 curl -X POST http://localhost:8000/api/v1/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email": "admin@flockenergy.tech", "password": "your_password"}'
+  -d '{"email": "user@flockenergy.tech", "password": "your_password"}'
 ```
 **Sample Response**:
 ```json
