@@ -1,0 +1,19 @@
+[project]
+name = "flock-energy-api"
+version = "1.0.0"
+description = "REST API wrapper around the legacy Urja Meter Ops portal"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.20.0",
+    "httpx>=0.24.0",
+    "beautifulsoup4>=4.12.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "python-dotenv>=1.0.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
