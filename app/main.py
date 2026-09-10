@@ -7,6 +7,7 @@ All scraping and session logic is decoupled via UrjaPortalClient and parser modu
 
 from typing import Optional
 from fastapi import Depends, FastAPI, Query, status
+from fastapi.responses import RedirectResponse
 from app.client import UrjaPortalClient
 from app.config import settings
 from app.exceptions import register_exception_handlers
@@ -54,6 +55,12 @@ def get_portal_client() -> UrjaPortalClient:
     if _portal_client is None:
         _portal_client = UrjaPortalClient()
     return _portal_client
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    """Root route redirecting to interactive Swagger documentation."""
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/health", response_model=HealthCheckResponse, tags=["Health"])

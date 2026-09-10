@@ -70,6 +70,12 @@ def test_health_check_endpoint(test_app):
     assert "https://" in data["upstream_portal"]
 
 
+def test_root_redirect_endpoint(test_app):
+    response = test_app.get("/", follow_redirects=False)
+    assert response.status_code in (302, 307)
+    assert response.headers["location"] == "/docs"
+
+
 def test_login_endpoint(test_app):
     response = test_app.post("/api/v1/auth/login", json={"email": "admin@flockenergy.tech", "password": "pass"})
     assert response.status_code == 200
